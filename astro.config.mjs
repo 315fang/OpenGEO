@@ -13,13 +13,13 @@ export default defineConfig({
 				root: { label: '简体中文', lang: 'zh-CN' },
 			},
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/315fang/OpenGEO' }],
-			// Microsoft Clarity 统计:拿到 project ID 后取消注释并替换占位符
-			// head: [
-			// 	{
-			// 		tag: 'script',
-			// 		content: `(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "CLARITY_PROJECT_ID");`,
-			// 	},
-			// ],
+			// Microsoft Clarity 真人访问统计(project: geo.wz.io)
+			head: [
+				{
+					tag: 'script',
+					content: `(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "yx0xkxqmxh");`,
+				},
+			],
 			sidebar: [
 				{
 					label: '指南',
