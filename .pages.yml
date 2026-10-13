@@ -1,0 +1,31 @@
+# Pages CMS 配置 —— OpenGEO 知识库
+# 编辑器:https://app.pagescms.org (GitHub 登录,选 315fang/OpenGEO)
+# 保存即 commit 到 main → GitHub Actions 自动构建部署到 geo.wz.io
+
+media:
+  input: public/images
+  output: /images
+
+content:
+  - name: docs
+    label: 知识库文章
+    type: collection
+    path: src/content/docs
+    icon: book
+    subfolders: true
+    fields:
+      - name: title
+        label: 标题
+        type: string
+        required: true
+      - name: description
+        label: 描述(SEO/摘要)
+        type: text
+      - name: body
+        label: 正文
+        type: rich-text
+
+actions:
+  - name: deploy
+    label: 手动触发部署
+    workflow: deploy.yml
