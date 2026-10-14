@@ -7,7 +7,7 @@ export default defineConfig({
 	site: 'https://geo.wz.io',
 	integrations: [
 		starlight({
-			title: 'OpenGEO',
+			title: '我这GEO',
 			// 中文为主，后续加英文：locales 里再加 en: { label: 'English', lang: 'en' }
 			locales: {
 				root: { label: '简体中文', lang: 'zh-CN' },
