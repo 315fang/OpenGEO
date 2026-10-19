@@ -1,34 +1,20 @@
-name: build & deploy
+name: retired
+
+# 这个仓库已停用，站点已迁移到 https://opengeo.page
+# 对应仓库：315fang/OpenGEO-Hugo
+#
+# 原来的 job 会把 dist/ rsync 到 /var/www/opengeo/，而那是 Hugo 站点的根目录，
+# 一旦运行会覆盖线上博客。现在改为仅手动触发，且只打印提示，不再部署。
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
-concurrency:
-  group: deploy-geo-wz-io
-  cancel-in-progress: false
-
 jobs:
-  build-deploy:
+  notice:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-
-      - run: npm ci
-      - run: npm run build
-
-      - name: rsync dist/ to server
-        env:
-          DEPLOY_KEY: ${{ secrets.OPENGEO_DEPLOY_KEY }}
+      - name: Retired
         run: |
-          mkdir -p ~/.ssh && chmod 700 ~/.ssh
-          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/deploy_key && chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -H 216.23.87.234 >> ~/.ssh/known_hosts 2>/dev/null
-          rsync -avz --delete --chown=root:root -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=accept-new" \
-            dist/ root@216.23.87.234:/var/www/opengeo/
+          echo "This project is retired."
+          echo "Live site: https://opengeo.page (315fang/OpenGEO-Hugo)"
+          echo "No deployment is performed by this workflow."
